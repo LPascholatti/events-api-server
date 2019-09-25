@@ -12,14 +12,14 @@ Event
 router.get('/event/:id', (req, res, next) =>
 Event
 .findByPk(req.params.id)
-.then(id => res.json(id))
+.then(id => res.status(200).json(id))
 .catch(next)
 );
 
 router.post('/event', (req, res, next) => 
 Event
 .create(req.body)
-.then(newEvent => res.json(newEvent))
+.then(newEvent => res.status(201).json(newEvent))
 .catch(next)
 );
 
@@ -27,7 +27,7 @@ router.put('/event/:id', (req, res, next) =>
 Event
     .findByPk(req.params.id)
     .then(event => event.update(req.body))
-    .then(event => res.send(event))
+    .then(event => res.status(201).send(event))
     .catch(next)
 )
 
